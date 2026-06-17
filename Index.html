@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقویم ایران 2585</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:tahoma,sans-serif;
+background:linear-gradient(135deg,#06121f,#102b45,#06121f);
+color:#fff;min-height:100vh;padding:20px;
+overflow-x:hidden;
+}
+body::before{
+content:"☀ 🦁";
+position:fixed;inset:0;
+display:flex;align-items:center;justify-content:center;
+font-size:220px;opacity:.04;pointer-events:none;
+}
+.calendar{
+max-width:1200px;margin:auto;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px) saturate(180%);
+border:1px solid rgba(255,255,255,.2);
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+header{
+text-align:center;
+padding:25px;
+background:linear-gradient(90deg,#17324d,#224b72);
+border-bottom:2px solid gold;
+}
+.faravahar{font-size:48px;color:gold}
+h1{color:gold;margin-top:8px}
+.controls{
+display:flex;justify-content:space-between;
+align-items:center;padding:20px;
+}
+button{
+background:linear-gradient(45deg,#d4af37,#ffd700);
+border:none;padding:12px 20px;border-radius:12px;
+font-weight:bold;cursor:pointer;
+}
+button:hover{transform:scale(1.05)}
+.weekdays,.days{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+}
+.weekdays div{
+background:#16324a;padding:12px;text-align:center;
+border:1px solid rgba(255,255,255,.1);
+}
+.day{
+min-height:105px;
+padding:8px;
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.04);
+transition:.3s;
+}
+.day:hover{
+transform:translateY(-4px);
+background:rgba(255,255,255,.09);
+}
+.num{font-weight:bold;font-size:20px}
+.eventtxt{font-size:11px;margin-top:8px}
+.nowruz{
+background:rgba(180,30,30,.65)!important;
+box-shadow:0 0 16px rgba(255,215,0,.4);
+color: crimson;
+}
+.event{
+background:rgba(21,101,192,.45)!important;
+}
+footer{
+text-align:center;
+padding:25px;
+color:gold;
+}
+@media(max-width:700px){
+.day{min-height:80px}
+.eventtxt{font-size:9px}
+.weekdays div{font-size:11px}
+}
+
+/* ========================= */
+/* Responsive Mobile Version */
+/* ========================= */
+
+html{
+    font-size:16px;
+}
+
+.calendar{
+    width:100%;
+}
+
+.day{
+    word-break:break-word;
+}
+
+.eventtxt{
+    overflow-wrap:break-word;
+}
+
+button{
+    transition:.3s;
+}
+
+@media (max-width:900px){
+
+    body{
+        padding:12px;
+    }
+
+    .controls{
+        gap:10px;
+    }
+
+    .day{
+        min-height:90px;
+    }
+
+    .eventtxt{
+        font-size:8px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    header{
+        padding:15px;
+    }
+
+    .faravahar{
+        font-size:32px;
+    }
+
+    h1{
+        font-size:1.4rem;
+    }
+
+    .controls{
+        display:grid;
+        grid-template-columns:1fr auto 1fr;
+        align-items:center;
+        gap:8px;
+        padding:12px;
+    }
+
+    .controls h2{
+        font-size:1rem;
+        text-align:center;
+    }
+
+    button{
+        padding:10px;
+        font-size:.8rem;
+    }
+
+    .weekdays div{
+        padding:6px;
+        font-size:10px;
+    }
+
+    .day{
+        min-height:80px;
+        padding:4px;
+    }
+
+    .num{
+        font-size:14px;
+    }
+
+    .eventtxt{
+        font-size:7px;
+        line-height:1.3;
+    }
+
+    body::before{
+        font-size:120px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    body{
+        padding:6px;
+    }
+
+    .calendar{
+        border-radius:18px;
+    }
+
+    h1{
+        font-size:1.1rem;
+    }
+
+    header p{
+        font-size:.8rem;
+    }
+
+    .weekdays div{
+        font-size:8px;
+        padding:4px;
+    }
+
+    .day{
+        min-height:65px;
+        padding:3px;
+    }
+
+    .num{
+        font-size:11px;
+    }
+
+.eventtxt{
+    font-size:11px;
+    font-weight:bold;
+    line-height:1.4;
+    color:#fff;
+    text-shadow:0 0 5px rgba(0,0,0,.8);
+}
+
+    button{
+        padding:8px;
+        font-size:.7rem;
+    }
+
+    body::before{
+        font-size:80px;
+    }
+
+    footer{
+        font-size:.8rem;
+    }
+}
+
+@media (max-width:360px){
+
+    .eventtxt{
+        display:none;
+    }
+
+    .day{
+        min-height:50px;
+    }
+
+    .num{
+        font-size:10px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .eventtxt{
+        font-size:10px;
+        line-height:1.3;
+    }
+
+    .num{
+        font-size:18px;
+    }
+
+    .day{
+        min-height:110px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .eventtxt{
+        font-size:9px;
+        line-height:1.25;
+    }
+
+    .num{
+        font-size:16px;
+    }
+
+    .day{
+        min-height:95px;
+    }
+
+}
+
+.footer{
+
+    margin-top:25px;
+
+    padding:25px 15px;
+
+    text-align:center;
+
+    background:
+    rgba(255,255,255,.05);
+
+    backdrop-filter:
+    blur(15px);
+
+    border-top:
+    1px solid rgba(255,215,0,.25);
+
+    box-shadow:
+    0 -5px 20px rgba(255,215,0,.08);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.footer::before{
+
+    content:"𓃬 ☼ 𓃬";
+
+    position:absolute;
+
+    top:10px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:rgba(255,215,0,.15);
+
+    font-size:28px;
+
+    letter-spacing:20px;
+}
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:10px;
+}
+
+.footer a{
+
+    color:#d4af37;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.footer a:hover{
+
+    color:#fff;
+
+    text-shadow:
+    0 0 10px gold,
+    0 0 20px gold;
+}
+
+.footer-divider{
+
+    color:gold;
+
+    font-size:18px;
+}
+
+.footer-copy{
+
+    color:rgba(255,255,255,.75);
+
+    font-size:13px;
+
+    letter-spacing:1px;
+}
+
+.footer-slogan{
+
+    margin-top:12px;
+
+    color:gold;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    text-shadow:
+    0 0 10px rgba(255,215,0,.5);
+
+    animation:goldPulse 3s infinite;
+}
+
+@keyframes goldPulse{
+
+    50%{
+        text-shadow:
+        0 0 20px gold,
+        0 0 40px gold;
+    }
+}
+
+
+.friday{
+    background: rgba(200, 0, 0, 0.55) !important;
+    border: 1px solid rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255,0,0,.5);
+}
+
+.friday .num{
+    color: #ff3b3b;
+    text-shadow: 0 0 10px red;
+}
+</style>
+</head>
+<body>
+
+<div class="calendar">
+<header>
+<div class="faravahar">𓃬☼</div>
+<h1>تقویم ایران 2585</h1>
+<p>باستانی | شاهنشاهی</p>
+</header>
+
+<div class="controls">
+<button id="prev">ماه قبل</button>
+<h2 id="title"></h2>
+<button id="next">ماه بعد</button>
+</div>
+
+<div class="weekdays">
+<div>شنبه</div><div>یکشنبه</div><div>دوشنبه</div>
+<div>سه‌شنبه</div><div>چهارشنبه</div><div>پنجشنبه</div><div>جمعه</div>
+</div>
+
+<div class="days" id="days"></div>
+</div>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <span class="footer-divider">✦</span>
+
+        <a href="https://www.instagram.com/zbctvteam">ZBC Team</a>
+
+        <span class="footer-divider">✦</span>
+
+        <a class="footer-slogan">    جاوید شاه ☀ پاینده ایران
+        </a>
+          
+
+
+</div>
+
+</footer>
+
+<script>
+
+const months=["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+const monthDays=[31,31,31,31,31,31,30,30,30,30,30,29];
+
+const events={
+"1-1":"نوروز","1-2":"نوروز","1-3":"نوروز","1-4":"نوروز","1-5":"نوروز","1-6":"نوروز",
+"1-7":"نوروز","1-8":"نوروز","1-9":"نوروز","1-10":"نوروز","1-11":"نوروز","1-12":"نوروز",
+"1-13":"روز طبیعت","1-14":" (تولد نور پهلوی)روز دختر",
+"2-3":"اردیبهشتگان",
+"3-6":"خردادگان",
+"4-13":"تیرگان و آب پاشانک",
+"5-7":"مردادگان",
+"6-4":"شهریورگان","6-26":"روز پسر",
+"7-16":"مهرگان",
+"8-4":"(تولد محمد رضا شاه پهلوی)روز پدر","8-7":"روز کورش","8-10":"آبانگان","8-30":"روز ازدواج",
+"9-9":"آذرگان","9-29":" (تولد فرح پهلوی)روز مادر","9-30":"یلدا",
+"10-1":"دیگان","10-18":"تاسیان","10-19":"داغیان",
+"11-2":"بهمنگان","11-10":"جشن سده",
+"12-5":"سپندارمذگان"
+};
+
+let current=0;
+const title=document.getElementById("title");
+const days=document.getElementById("days");
+
+function render(){
+days.innerHTML="";
+title.textContent=months[current]+" 2585";
+
+for(let d=1; d<=monthDays[current]; d++){
+const key=(current+1)+"-"+d;
+const div=document.createElement("div");
+div.className="day";
+
+if(current===0 && d<=13) div.classList.add("nowruz");
+if(events[key]) div.classList.add("event");
+
+div.innerHTML=`
+<div class="num">${d}</div>
+<div class="eventtxt">${events[key]||""}</div>
+`;
+days.appendChild(div);
+}
+}
+
+document.getElementById("next").onclick=()=>{
+current=(current+1)%12;
+render();
+};
+
+document.getElementById("prev").onclick=()=>{
+current=(current-1+12)%12;
+render();
+};
+
+render();
+
+div.title = events[key] || "";
+div.onclick = () => {
+
+    if(events[key]){
+        alert(events[key]);
+    }
+
+};
+
+if((d % 7) === 6){
+    div.classList.add("friday");
+}
+</script>
+</body>
+</html>
